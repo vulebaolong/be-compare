@@ -1,0 +1,7 @@
+services:
+  go-api:
+    image: img-go_gin:latest
+    container_name: con-go_gin
+    ports:
+      - "8081:8081"
+    restart: always

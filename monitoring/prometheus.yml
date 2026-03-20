@@ -1,0 +1,33 @@
+# docker compose restart prometheus
+# http://localhost:9090/targets
+# http://localhost:3000/d/adhpmjg/be-compare?orgId=1&from=now-5m&to=now&timezone=browser&refresh=1s
+
+global:
+    scrape_interval: 2s
+    evaluation_interval: 2s
+
+scrape_configs:
+    - job_name: "go-gin"
+      static_configs:
+        #   - targets: ["host.docker.internal:8081"]
+          - targets: ["13.229.183.109:8081"]
+
+    - job_name: "js-express"
+      static_configs:
+        #   - targets: ["host.docker.internal:8082"]
+          - targets: ["13.212.214.53:8082"]
+
+    - job_name: "csharp-api"
+      static_configs:
+          # - targets: ["host.docker.internal:8083"]
+          - targets: ["13.212.75.86:8083"]
+
+    - job_name: "java-api"
+      static_configs:
+          # - targets: ["host.docker.internal:8084"]
+          - targets: ["54.179.141.128:8084"]
+
+    - job_name: "rust-api"
+      static_configs:
+    #       - targets: ["host.docker.internal:8085"]
+          - targets: ["54.169.106.172:8085"]

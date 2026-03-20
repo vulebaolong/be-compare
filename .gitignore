@@ -1,0 +1,64 @@
+key
+
+# ===== OS / Editor =====
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ===== Logs =====
+*.log
+logs/
+tmp/
+temp/
+
+# ===== Environment =====
+.env
+.env.*
+!.env.example
+
+# ===== Docker =====
+docker-compose.override.yml
+
+# ===== Go =====
+go-gin/bin/
+go-gin/dist/
+go-gin/tmp/
+go-gin/vendor/
+
+# ===== Node.js =====
+js-express/node_modules/
+js-express/dist/
+js-express/build/
+js-express/.next/
+js-express/coverage/
+js-express/npm-debug.log*
+js-express/yarn-debug.log*
+js-express/yarn-error.log*
+js-express/pnpm-debug.log*
+
+# ===== C# / .NET =====
+csharp-api/bin/
+csharp-api/obj/
+csharp-api/.vs/
+csharp-api/*.user
+csharp-api/*.suo
+csharp-api/*.userosscache
+csharp-api/*.rsuser
+
+# ===== Java / Maven =====
+java-api/target/
+java-api/.mvn/wrapper/maven-wrapper.jar
+
+# ===== Rust =====
+rust-api/target/
+
+# Ignore Cargo.lock only if this is a library.
+# For application/backend projects, usually keep Cargo.lock.
+# rust-api/Cargo.lock
+
+# ===== Test / Coverage =====
+coverage/
+.coverage
+*.out
+*.test

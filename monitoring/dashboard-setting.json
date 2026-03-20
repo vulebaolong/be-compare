@@ -1,0 +1,393 @@
+{
+    "annotations": {
+        "list": [
+            {
+                "builtIn": 1,
+                "datasource": {
+                    "type": "grafana",
+                    "uid": "-- Grafana --"
+                },
+                "enable": true,
+                "hide": true,
+                "iconColor": "rgba(0, 211, 255, 1)",
+                "name": "Annotations & Alerts",
+                "type": "dashboard"
+            }
+        ]
+    },
+    "description": "",
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "links": [],
+    "panels": [
+        {
+            "datasource": {
+                "uid": "efgjolof24hkwb"
+            },
+            "description": "Giá trị này cho biết 99% số request gửi tới API /benchmark có thời gian xử lý nhỏ hơn hoặc bằng con số đang hiển thị, đơn vị là mili giây (ms).\nNói cách khác, nếu panel hiển thị 50 ms thì có nghĩa là 99 trên 100 request sẽ được backend xử lý xong trong 50 ms hoặc nhanh hơn.\nChỉ số này rất hữu ích để theo dõi những request chậm bất thường và đánh giá phần đuôi trễ của hệ thống, tức là nhóm request hiếm nhưng chậm.",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisBorderShow": false,
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "barWidthFactor": 0.6,
+                        "drawStyle": "line",
+                        "fillOpacity": 50,
+                        "gradientMode": "opacity",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "insertNulls": false,
+                        "lineInterpolation": "linear",
+                        "lineWidth": 1,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "auto",
+                        "showValues": false,
+                        "spanNulls": false,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "none"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "off"
+                        }
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": 0
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 0
+            },
+            "id": 3,
+            "interval": "1",
+            "options": {
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "right",
+                    "showLegend": true
+                },
+                "tooltip": {
+                    "hideZeros": false,
+                    "mode": "multi",
+                    "sort": "none"
+                }
+            },
+            "pluginVersion": "12.4.1",
+            "targets": [
+                {
+                    "editorMode": "code",
+                    "expr": "1000 * histogram_quantile(0.99, sum by(job, le) (rate(app_http_request_duration_seconds_bucket{path=\"/benchmark\"}[5s])))",
+                    "legendFormat": "__auto",
+                    "range": true,
+                    "refId": "A"
+                }
+            ],
+            "title": "P99 Độ trễ của API /benchmark (ms)",
+            "type": "timeseries"
+        },
+        {
+            "datasource": {
+                "uid": "efgjolof24hkwb"
+            },
+            "description": "Thời gian xử lý trung bình API /benchmark trong 5 giây gần nhất, theo từng backend Go và JS, đơn vị ms.",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisBorderShow": false,
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "barWidthFactor": 0.6,
+                        "drawStyle": "line",
+                        "fillOpacity": 50,
+                        "gradientMode": "opacity",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "insertNulls": false,
+                        "lineInterpolation": "linear",
+                        "lineStyle": {
+                            "fill": "solid"
+                        },
+                        "lineWidth": 1,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "auto",
+                        "showValues": false,
+                        "spanNulls": false,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "none"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "off"
+                        }
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": 0
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 0
+            },
+            "id": 1,
+            "interval": "1",
+            "options": {
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "right",
+                    "showLegend": true
+                },
+                "tooltip": {
+                    "hideZeros": false,
+                    "mode": "multi",
+                    "sort": "none"
+                }
+            },
+            "pluginVersion": "12.4.1",
+            "targets": [
+                {
+                    "editorMode": "code",
+                    "expr": "1000 *\nsum by(job) (\n  rate(app_http_request_duration_seconds_sum{path=\"/benchmark\"}[5s])\n)\n/\nsum by(job) (\n  rate(app_http_request_duration_seconds_count{path=\"/benchmark\"}[5s])\n)",
+                    "legendFormat": "__auto",
+                    "range": true,
+                    "refId": "A"
+                }
+            ],
+            "title": "Thời gian xử lý trung bình API /benchmark trong 5 giây gần nhất",
+            "type": "timeseries"
+        },
+        {
+            "datasource": {
+                "uid": "efgjolof24hkwb"
+            },
+            "description": "Giá trị này cho biết 95% số request gửi tới API /benchmark có thời gian xử lý nhỏ hơn hoặc bằng con số đang hiển thị, đơn vị là mili giây (ms).\nNói cách khác, nếu panel hiển thị 20 ms thì có nghĩa là 95 trên 100 request sẽ được backend xử lý xong trong 20 ms hoặc nhanh hơn.\nChỉ số này dùng để phản ánh trải nghiệm của phần lớn người dùng, không bị ảnh hưởng quá nhiều bởi một vài request chậm bất thường.",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisBorderShow": false,
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "barWidthFactor": 0.6,
+                        "drawStyle": "line",
+                        "fillOpacity": 51,
+                        "gradientMode": "opacity",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "insertNulls": false,
+                        "lineInterpolation": "linear",
+                        "lineWidth": 1,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "auto",
+                        "showValues": false,
+                        "spanNulls": false,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "none"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "off"
+                        }
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": 0
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 8
+            },
+            "id": 4,
+            "interval": "1",
+            "options": {
+                "legend": {
+                    "calcs": [],
+                    "displayMode": "table",
+                    "placement": "right",
+                    "showLegend": true
+                },
+                "tooltip": {
+                    "hideZeros": false,
+                    "mode": "single",
+                    "sort": "none"
+                }
+            },
+            "pluginVersion": "12.4.1",
+            "targets": [
+                {
+                    "editorMode": "code",
+                    "expr": "1000 * histogram_quantile(0.95, sum by(job, le) (rate(app_http_request_duration_seconds_bucket{path=\"/benchmark\"}[5s])))",
+                    "legendFormat": "__auto",
+                    "range": true,
+                    "refId": "A"
+                }
+            ],
+            "title": "p95: Độ trễ của API /benchmark (ms)",
+            "type": "timeseries"
+        },
+        {
+            "datasource": {
+                "uid": "efgjolof24hkwb"
+            },
+            "description": "Thời gian xử lý trung bình API /benchmark trong 5 giây gần nhất, theo từng backend Go và JS, đơn vị ms.",
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green",
+                                "value": 0
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 8
+            },
+            "id": 5,
+            "interval": "1",
+            "options": {
+                "minVizHeight": 75,
+                "minVizWidth": 75,
+                "orientation": "auto",
+                "reduceOptions": {
+                    "calcs": ["lastNotNull"],
+                    "fields": "",
+                    "values": false
+                },
+                "showThresholdLabels": false,
+                "showThresholdMarkers": true,
+                "sizing": "auto"
+            },
+            "pluginVersion": "12.4.1",
+            "targets": [
+                {
+                    "editorMode": "code",
+                    "expr": "1000 *\nsum by(job) (\n  rate(app_http_request_duration_seconds_sum{path=\"/benchmark\"}[5s])\n)\n/\nsum by(job) (\n  rate(app_http_request_duration_seconds_count{path=\"/benchmark\"}[5s])\n)",
+                    "legendFormat": "__auto",
+                    "range": true,
+                    "refId": "A"
+                }
+            ],
+            "title": "Thời gian xử lý trung bình API /benchmark trong 5 giây gần nhất",
+            "type": "gauge"
+        }
+    ],
+    "preload": false,
+    "refresh": "1s",
+    "schemaVersion": 42,
+    "tags": [],
+    "templating": {
+        "list": []
+    },
+    "time": {
+        "from": "now-5m",
+        "to": "now"
+    },
+    "timepicker": {
+        "refresh_intervals": ["1s", "5s", "10s", "30s", "1m", "5m", "15m", "30m", "1h", "2h", "1d"]
+    },
+    "timezone": "browser",
+    "title": "be-compare",
+    "uid": "adhpmjg",
+    "version": 11,
+    "weekStart": ""
+}

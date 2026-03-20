@@ -1,0 +1,7 @@
+services:
+  node-api:
+    image: img-js_express:latest
+    container_name: con-js_express
+    ports:
+      - "8082:8082"
+    restart: always

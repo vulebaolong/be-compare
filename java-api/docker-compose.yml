@@ -1,0 +1,7 @@
+services:
+  java-api:
+    image: img-java_api:latest
+    container_name: con-java_api
+    ports:
+      - "8084:8084"
+    restart: always

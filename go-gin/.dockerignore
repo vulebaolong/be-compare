@@ -1,0 +1,13 @@
+.git
+.gitignore
+Dockerfile
+docker-compose.yml
+README.md
+*.log
+tmp
+dist
+out
+target
+node_modules
+bin
+obj

@@ -1,0 +1,7 @@
+services:
+  rust-api:
+    image: img-rust_api:latest
+    container_name: con-rust_api
+    ports:
+      - "8085:8085"
+    restart: always

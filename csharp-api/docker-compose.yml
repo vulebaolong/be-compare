@@ -1,0 +1,7 @@
+services:
+  csharp-api:
+    image: img-csharp_api:latest
+    container_name: con-csharp_api
+    ports:
+      - "8083:8083"
+    restart: always
