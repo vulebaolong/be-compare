@@ -42,11 +42,11 @@ export const options = {
     },
 };
 
-const domainGo = "http://13.229.183.109";
-const domainJs = "http://13.212.214.53";
-const domainCsharp = "http://13.212.75.86";
-const domainJava = "http://54.179.141.128";
-const domainRust = "http://54.169.106.172";
+const domainGo = "http://54.179.157.206";
+const domainJs = "http://13.212.74.107";
+const domainCsharp = "http://52.77.210.38";
+const domainJava = "http://13.212.236.217";
+const domainRust = "http://13.212.187.248";
 
 function randomSleep(min, max) {
     return Math.random() * (max - min) + min;
